@@ -18,7 +18,7 @@ class Player(ABC):
         """
         self.position = (0, 0)
         self.speed = 0
-        self.rotation = 90
+        self.rotation = 108
 
         self.score = 0
         self.alive = True

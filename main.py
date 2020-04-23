@@ -3,7 +3,7 @@ from src.player import HumanPlayer
 
 
 def main():
-    track = Environment('assen')
+    track = Environment('monaco')
 
     game_engine = Engine(
         environment=track,
