@@ -28,8 +28,8 @@ class Engine(object):
     """
     RUNNING = 0
     FINISHED = 1
-    SECONDS_PER_FRAME = 1/30  # Step size of turns. Slows down the game if frames are dropped
-    SCALE = 1/0.3  # Changing might ruin gaming experience
+    SECONDS_PER_FRAME = 1 / 30  # Step size of turns. Slows down the game if frames are dropped
+    SCALE = 1 / 0.3  # Changing might ruin gaming experience
     ACCELERATION = 5
     ROTATION_SPEED = 180
 
@@ -63,7 +63,7 @@ class Engine(object):
         """
         Start the game!
         Does not start a thread; will hold execution until game is completed.
-        :param stop_on_death: Wether to stop if all players are ded irl
+        :param stop_on_death: Whether to stop if all players are ded irl
         :return: self
         """
         while self.is_running():
@@ -585,6 +585,7 @@ class Environment(object):
 
     This class also contains environment related helper functions.
     """
+
     def __init__(self, track):
         """
 

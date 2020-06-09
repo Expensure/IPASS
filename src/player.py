@@ -18,7 +18,7 @@ class Player(ABC):
         """
         self.position = (0, 0)
         self.speed = 0
-        self.rotation = 108
+        self.rotation = 0
 
         self.score = 0
         self.alive = True
@@ -117,7 +117,7 @@ class NaiveAi(Player):
     """
     Super simple Naive AI that will try to stay away from the walls. User ray-tracing sensors (DistanceSensor).
     """
-    SENSOR_DISTANCE = 60
+    SENSOR_DISTANCE = 15
 
     def __init__(self):
         """
