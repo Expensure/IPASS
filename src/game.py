@@ -18,7 +18,7 @@ from loguru import logger
 import pygame
 from pygame import freetype
 
-from src import bresenham
+from src import bresenham_two_coordinates as b
 
 
 class Engine(object):
@@ -665,7 +665,7 @@ class Environment(object):
         origin = self.location_to_pixel(position)
         target = self.translate(position, distance, angle, pixel=True)
 
-        line_of_sight = bresenham.get_line(
+        line_of_sight = b.get_line(
             origin,
             target
         )

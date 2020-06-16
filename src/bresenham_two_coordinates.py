@@ -32,8 +32,8 @@ def get_line(start, end):
     """
 
     # Setup initial conditions
-    x1, y1 = start
-    x2, y2 = end
+    x1 , y1 = start
+    x2 , y2 = end
     dx = x2 - x1
     dy = y2 - y1
  

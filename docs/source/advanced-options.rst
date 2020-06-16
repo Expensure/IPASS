@@ -6,7 +6,7 @@ Tricks for pro's
 
 - Press "1" to cycle between "fancy train", "minimal line" and "invisible"
 - Press "2" to cycle between "not showing sensors", "showing sensors". The default HumanPlayer does not have sensors;
-  this will appear to do nothing. See :doc:`ai-players` for more information about sensors.
+  this will appear to do nothing. See `ai-players.rst` for more information about sensors.
 - Press "3" to cycle between "fancy map", "raw map", "score map" and "no map"
 - Press "4" to toggle the frame rate limiter
 
@@ -14,7 +14,7 @@ Custom key bindings
 -------------------
 Custom actions can be bound to custom keys to control the game play during the game. Keys can be found on in the
 `pygame docs <https://www.pygame.org/docs/ref/key.html>`_. More documentation on this and other functions can be found
-in the :doc:`api-reference`, specifically :doc:`game`
+in the :doc:`api-reference.rst`, specifically :doc:`game.rst`
 
 .. code-block:: python
 
