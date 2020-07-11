@@ -12,13 +12,14 @@ class Player(ABC):
     """
     Abstract class. Subclass this if you want to make a new player. See readthedocs for more info.
     """
+
     def __init__(self):
         """
         Set initial values for player
         """
         self.position = (0, 0)
         self.speed = 0
-        self.rotation = 0
+        self.rotation = 100
 
         self.score = 0
         self.alive = True
@@ -87,6 +88,7 @@ class HumanPlayer(Player):
     """
     Human Player that does not have sensors but responds to key input
     """
+
     def __init__(self):
         super().__init__()
 
@@ -99,7 +101,7 @@ class HumanPlayer(Player):
         :return: keys dictionary
         """
         return keys
-        
+
     def plan(self, percepts):
         """
         Listen to key input.
@@ -160,6 +162,7 @@ class DistanceSensor(object):
     Linear distance sensor using a simple raytracing algorithm. This sensor is drawable because it has percept, depth
     and a get_absolute_angle function. At the moment this is required to be drawn.
     """
+
     def __init__(self, player, angle, depth):
         """
         :param player: The player the sensor belongs to
@@ -198,3 +201,18 @@ class DistanceSensor(object):
         """
         absolute_angle = self.player.rotation + self.angle
         return absolute_angle
+
+
+class RacingNode(object):
+
+    def __init__(self, player, angle, depth, score):
+        self.player = player
+        self.angle = angle
+        self.depth = depth
+        self.location = score
+
+    def create_node
+
+
+class RacingAi(Player):
+    print("h")

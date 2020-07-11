@@ -1,16 +1,16 @@
 from src.game import Engine, Environment
-from src.player import NaiveAi, HumanPlayer
+from src.player import NaiveAi
 
 
 def track():
-    track_name = Environment('hockenheim')
+    track_name = Environment('monaco')
     return track_name
 
 
 def main():
     game_engine = Engine(
         environment=track(),
-        players=[NaiveAi(), HumanPlayer()]
+        players=[NaiveAi()]
     )
 
     game_engine.play()
