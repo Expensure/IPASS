@@ -6,12 +6,11 @@ The game engine for a 2D racing game, using the pygame library. Built to demonst
 Custom track can be built in paint, please see :doc:`getting-started` for more information.
 
 """
-
 import time
 import functools
 import math
 import random
-
+import decimal as d
 from PIL import Image
 import numpy as np
 from loguru import logger
@@ -384,7 +383,8 @@ class Engine(object):
             player.alive = False
             player.ending_tick = self.tick
             life_span = player.ending_tick - player.starting_tick
-            logger.info(f"Player {player.id} died with score {player.score:.0f} in {life_span} turns")
+            total_time = '{0:.3f}'.format( d.Decimal(life_span / 30))
+            logger.info(f"Player {player.id} died with score {player.score:.0f} in {total_time} seconds")
 
     def _handle_pygame_events(self):
         """

@@ -205,13 +205,27 @@ class DistanceSensor(object):
 
 class RacingNode(object):
 
-    def __init__(self, player, angle, depth, score):
+    def __init__(self, player, angle, depth, score, dataval = None):
         self.player = player
         self.angle = angle
         self.depth = depth
         self.location = score
+        self.dataval = dataval
+        self.nextval = None
 
-    def create_node
+
+    def nodesbaseonangle(self, score):
+        while score > 10:
+            if score % 8:
+                e1 = RacingNode(-30)
+                e2 = RacingNode(-20)
+                e3 = RacingNode(-10)
+                e4 = RacingNode(-5)
+                e5 = RacingNode(0)
+                e6 = RacingNode(5)
+                e7 = RacingNode(10)
+                e8 = RacingNode(20)
+                e9 = RacingNode(30)
 
 
 class RacingAi(Player):
