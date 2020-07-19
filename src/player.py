@@ -19,8 +19,7 @@ class Player(ABC):
         """
         self.position = (0, 0)
         self.speed = 0
-        self.rotation = 100
-
+        self.rotation = 90
         self.score = 0
         self.alive = True
 
@@ -151,10 +150,61 @@ class NaiveAi(Player):
             rotation_command = -1
         else:
             rotation_command = 1
-
         acceleration_command = self.speed < 1  # accelerate if going slow
 
         return acceleration_command, rotation_command
+
+
+class AcceleratingAi(Player):
+    """
+    Uses some of the elements of the NaiveAI but starts accelerating and breaking.
+    """
+    SENSOR_DISTANCE = 22
+
+    def __init__(self):
+        """
+        Initialize and add 2 ray-tracing sensors.
+        """
+        super().__init__()
+        self.sensors += [DistanceSensor(self, a, AcceleratingAi.SENSOR_DISTANCE) for a in [-30, 30]]
+
+    def sense(self, track, keys):
+        """
+        Calls its sensors using the track information to find distance to the walls.
+
+        :param track: Environment object
+        :param keys: Not used
+        :return: a list with distances per sensor
+        """
+        percepts = [s.perceive(track) for s in self.sensors]
+        return percepts
+
+    def plan(self, percepts):
+        """
+        Use the percepts to choose actions. This naive AI will match a certain speed and rotate away from the nearest
+        visible wall.
+
+        :param percepts:
+        :return: acceleration_command, rotation_command
+        """
+        if percepts[0] > percepts[1] + 0.25:
+            rotation_command = -1
+        elif percepts[0] < percepts[1]:
+            rotation_command = 1
+        else:
+            rotation_command = 0
+        if rotation_command == 0:
+            acceleration_command = self.speed < 1.80
+        else:
+            acceleration_command = self.speed < -0.25
+
+        return acceleration_command, rotation_command
+
+
+class ShortestAi(Player):
+    """
+    Finds the shortest path at the start of them race, and then drives along afterwards.
+    """
 
 
 class DistanceSensor(object):
@@ -201,32 +251,3 @@ class DistanceSensor(object):
         """
         absolute_angle = self.player.rotation + self.angle
         return absolute_angle
-
-
-class RacingNode(object):
-
-    def __init__(self, player, angle, depth, score, dataval = None):
-        self.player = player
-        self.angle = angle
-        self.depth = depth
-        self.location = score
-        self.dataval = dataval
-        self.nextval = None
-
-
-    def nodesbaseonangle(self, score):
-        while score > 10:
-            if score % 8:
-                e1 = RacingNode(-30)
-                e2 = RacingNode(-20)
-                e3 = RacingNode(-10)
-                e4 = RacingNode(-5)
-                e5 = RacingNode(0)
-                e6 = RacingNode(5)
-                e7 = RacingNode(10)
-                e8 = RacingNode(20)
-                e9 = RacingNode(30)
-
-
-class RacingAi(Player):
-    print("h")
