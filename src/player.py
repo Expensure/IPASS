@@ -203,7 +203,7 @@ class AcceleratingAi(Player):
 
 class ShortestAi(Player):
     """
-    Finds the shortest path at the start of them race, and then drives along afterwards.
+    Finds the shortest path at the start of them race, and then drives along afterwards...
     """
 
 
